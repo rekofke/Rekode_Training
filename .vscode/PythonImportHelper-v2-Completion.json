@@ -234,6 +234,15 @@
         "documentation": {}
     },
     {
+        "label": "ProgressLogsSchema",
+        "kind": 6,
+        "importPath": "app.schemas.progress_log_schema",
+        "description": "app.schemas.progress_log_schema",
+        "peekOfCode": "class ProgressLogsSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = ProgressLog\n        load_instance = True\n        include_fk = True",
+        "detail": "app.schemas.progress_log_schema",
+        "documentation": {}
+    },
+    {
         "label": "SessionBookingSchema",
         "kind": 6,
         "importPath": "app.schemas.session_booking_schema",
