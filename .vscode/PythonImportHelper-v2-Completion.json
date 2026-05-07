@@ -32,6 +32,14 @@
         "documentation": {}
     },
     {
+        "label": "fields",
+        "importPath": "marshmallow",
+        "description": "marshmallow",
+        "isExtraImport": true,
+        "detail": "marshmallow",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -226,6 +234,15 @@
         "documentation": {}
     },
     {
+        "label": "SessionBookingSchema",
+        "kind": 6,
+        "importPath": "app.schemas.session_booking_schema",
+        "description": "app.schemas.session_booking_schema",
+        "peekOfCode": "class SessionBookingSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = SessionBooking\n        load_instanc = True\n        include_fk = True",
+        "detail": "app.schemas.session_booking_schema",
+        "documentation": {}
+    },
+    {
         "label": "TrainerSchema",
         "kind": 6,
         "importPath": "app.schemas.trainer_schema",
@@ -241,6 +258,24 @@
         "description": "app.schemas.user_schema",
         "peekOfCode": "class UserSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = User\n        load_instance = True\n        exclued = ('password_hash')\n    password = fields.string(load_only=True, required=True)",
         "detail": "app.schemas.user_schema",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutExerciseSchema",
+        "kind": 6,
+        "importPath": "app.schemas.workout_plan_schema",
+        "description": "app.schemas.workout_plan_schema",
+        "peekOfCode": "class WorkoutExerciseSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = WorkoutExercise\n        load_instance = True\n        include_fk = True\nclass WorkoutPlanSchema(ma.SQLAlchemyAutoSchema):\n    exercises = fields.List(fields.Nested(WorkoutExerciseSchema))\n    class Meta:\n        model = WorkoutPlan\n        load_instance = True",
+        "detail": "app.schemas.workout_plan_schema",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutPlanSchema",
+        "kind": 6,
+        "importPath": "app.schemas.workout_plan_schema",
+        "description": "app.schemas.workout_plan_schema",
+        "peekOfCode": "class WorkoutPlanSchema(ma.SQLAlchemyAutoSchema):\n    exercises = fields.List(fields.Nested(WorkoutExerciseSchema))\n    class Meta:\n        model = WorkoutPlan\n        load_instance = True\n        include_fk = True",
+        "detail": "app.schemas.workout_plan_schema",
         "documentation": {}
     },
     {
