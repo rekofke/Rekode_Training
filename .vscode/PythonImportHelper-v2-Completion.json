@@ -16,6 +16,119 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "JWTManager",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "Marshmallow",
+        "importPath": "flask_marshmallow",
+        "description": "flask_marshmallow",
+        "isExtraImport": true,
+        "detail": "flask_marshmallow",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models.user",
+        "description": "models.user",
+        "isExtraImport": true,
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "models.trainer",
+        "description": "models.trainer",
+        "isExtraImport": true,
+        "detail": "models.trainer",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "models.client",
+        "description": "models.client",
+        "isExtraImport": true,
+        "detail": "models.client",
+        "documentation": {}
+    },
+    {
         "label": "Client",
         "kind": 6,
         "importPath": "app.models.client",
@@ -85,6 +198,78 @@
         "description": "app.models.workout_session",
         "peekOfCode": "class WorkoutSession(db.Model):\n    __tablename_ = 'Workout_sessions'\n    session_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, ForeignKey=True)\n    plan_id = db.Column(db.Integer, ForeignKey=True)\n    dae = db.Column(db.Date, server_default=db.func.now())\n    completed = db.Column(db.Boolean, default=True)\n    duration_minutes = db.Column(db.Integer)\n    notes = db.Column(db.Text)",
         "detail": "app.models.workout_session",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "app.config",
+        "description": "app.config",
+        "peekOfCode": "class Config:\n    SECRET_KEY = os.getenv('SECRET_KEY')\n    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')\n    SQLALCHEMY_TRACK_MODIFICATIONS = False\n    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')\n    JWT_ACCESS_TOKEN_EXPIRES = 86400  # 1 day in seconds",
+        "detail": "app.config",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "db = SQLAlchemy()\njwt = JWTManager()\nma = Marshmallow()\ncors = CORS()",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "jwt = JWTManager()\nma = Marshmallow()\ncors = CORS()",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "ma",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "ma = Marshmallow()\ncors = CORS()",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "cors",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "cors = CORS()",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "auth",
+        "description": "auth",
+        "peekOfCode": "def register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()\n    if data['role'] == 'trainer':\n        profile = Trainer(",
+        "detail": "auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "auth",
+        "description": "auth",
+        "peekOfCode": "def login():\n    data = request.json\n    user = User.query.filter_by(email=data['email']).first()\n    if not user or not user.check_password(data['password']):\n        return jsonify({'error': 'Invalid credentials'}), 401\n    token = create_access_token(identity=user.user_id)\n    return jsonify({'access_token': token, 'role': user.role}), 200",
+        "detail": "auth",
+        "documentation": {}
+    },
+    {
+        "label": "auth_bp",
+        "kind": 5,
+        "importPath": "auth",
+        "description": "auth",
+        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods='POST')\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()",
+        "detail": "auth",
         "documentation": {}
     }
 ]
