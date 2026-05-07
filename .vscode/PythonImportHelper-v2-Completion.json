@@ -25,6 +25,24 @@
         "documentation": {}
     },
     {
+        "label": "ProgressLog",
+        "kind": 6,
+        "importPath": "app.models.progress_log",
+        "description": "app.models.progress_log",
+        "peekOfCode": "class ProgressLog(db.Model):\n    __tablename__ = 'progress_logs'\n    log_id  = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)\n    date = db.Column(db.Date, server_default-db.func.current_date())\n    weight_kg = db.Column(db.Numberic(5, 2))\n    body_fat_percentage = db.Column(db.Numberic(4, 2))\n    Measurements = db.Column(db.JSON) # EG {\"chest\":100, \"waist\":80, \"hips\":90}\n    notes = db.Column(db.Text)",
+        "detail": "app.models.progress_log",
+        "documentation": {}
+    },
+    {
+        "label": "SessionBooking",
+        "kind": 6,
+        "importPath": "app.models.session_booking",
+        "description": "app.models.session_booking",
+        "peekOfCode": "class SessionBooking(db.Model):\n    __tablename__ = 'session_bookings'\n    booking_id = db.Column(db.Integer, primary_key=True)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    client_id = db.Column(db.Integer('clients.client_id'), nullable=False)\n    datetime = db.Column(db.DateTime, nullable=False)\n    duraton_minutes = db.Column(db.Integer, default=60)\n    status = db.Column(db.String(20), default='Scheduled') # scheduled, completed, cancelled\n    notes = db.Column(db.Text)",
+        "detail": "app.models.session_booking",
+        "documentation": {}
+    },
+    {
         "label": "Trainer",
         "kind": 6,
         "importPath": "app.models.trainer",
@@ -58,6 +76,15 @@
         "description": "app.models.workout_plan",
         "peekOfCode": "class WorkoutPlan(db.Model):\n    __tablename__ = 'workout_plans'\n    plan_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.Text)\n    start_date = db.Column(db.Date)\n    end_date = db.Column(db.Date)\n    exercises = db.relationship('WorkoutExercise', backref='plan', lazy=True, cascade='all, delete-orphan')",
         "detail": "app.models.workout_plan",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutSession",
+        "kind": 6,
+        "importPath": "app.models.workout_session",
+        "description": "app.models.workout_session",
+        "peekOfCode": "class WorkoutSession(db.Model):\n    __tablename_ = 'Workout_sessions'\n    session_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, ForeignKey=True)\n    plan_id = db.Column(db.Integer, ForeignKey=True)\n    dae = db.Column(db.Date, server_default=db.func.now())\n    completed = db.Column(db.Boolean, default=True)\n    duration_minutes = db.Column(db.Integer)\n    notes = db.Column(db.Text)",
+        "detail": "app.models.workout_session",
         "documentation": {}
     }
 ]
