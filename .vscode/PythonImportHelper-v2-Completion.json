@@ -1,0 +1,63 @@
+[
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "kind": 6,
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "peekOfCode": "class Client(db.Model):\n    __tablename__ = 'clients'\n    client_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), primary_key=True)\n    first_name = db.Column(db.String(50), nullable=False)\n    last_name = db.Column(db.String(50), nullable=False)\n    phone = db.Column(db.String(20))\n    date_of_birth = db.Column(db.Date)\n    fitness_goals = db.Column(db.Text)\n    is_active = db.Column(db.Boolean, default=True)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'))",
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "kind": 6,
+        "importPath": "app.models.trainer",
+        "description": "app.models.trainer",
+        "peekOfCode": "class Trainer(db.Model):\n    __tablename__ = 'trainers'\n    trainer_id = db.Column (db.Integer, db.ForeignKey('users.user_id'), primary_key=True)\n    first_name = db.Column(db.String(50), nullable=False)\n    last_name = db.Column(db.String(50), nullable=False)\n    specialization = db.Column(db.String(100))\n    bio = db.Column(db.Text)\n    hourly_rate = db.Column(db.Numeric(10, 2))\n    certifications = db.Column(db.Text)\n    clients = db.relationship('Client', backref='trainer', lazy=True)",
+        "detail": "app.models.trainer",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "app.models.user",
+        "description": "app.models.user",
+        "peekOfCode": "class User(db.Model):\n    __tablename__ = 'users'\n    user_id = db.columb(db.Integer, primary_key=True)\n    email = db.column(db.String(120), unique=True, nullable=False)\n    passwrd_hash = db.column(db.String(120), nullable=False)\n    role = db.column(db.String(120),nullable=False) # 'Trainer' or 'Client'\n    created_at = db.column(db.DateTime, server_default=db.func.now())\n    def set_password(self, password):\n        self.password_hash = generate_password_hash(password)\n    def check_password(self, password):",
+        "detail": "app.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutExercise",
+        "kind": 6,
+        "importPath": "app.models.workout_exercise",
+        "description": "app.models.workout_exercise",
+        "peekOfCode": "class WorkoutExercise(db.Model):\n    __table__ = 'workout_exercise'\n    exercise_id = db.Column(db.Integer, primary_key=True)\n    plan_id = db.Column(db.Integer, db.ForeignKey('workout_plans.plan_id'), nullable=False)\n    exercise_name = db.Column(db.String(100), nullable=False)\n    sets = db.Column(db.Integer)\n    reps = db.Column(db.Integer)\n    weight = db.Column(db.String(20)) # e.g. \"50 kg\" or \"bodyweight\"\n    notes = db.Column(db.StringO(200))",
+        "detail": "app.models.workout_exercise",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutPlan",
+        "kind": 6,
+        "importPath": "app.models.workout_plan",
+        "description": "app.models.workout_plan",
+        "peekOfCode": "class WorkoutPlan(db.Model):\n    __tablename__ = 'workout_plans'\n    plan_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.Text)\n    start_date = db.Column(db.Date)\n    end_date = db.Column(db.Date)\n    exercises = db.relationship('WorkoutExercise', backref='plan', lazy=True, cascade='all, delete-orphan')",
+        "detail": "app.models.workout_plan",
+        "documentation": {}
+    }
+]
