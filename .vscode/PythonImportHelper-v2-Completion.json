@@ -96,7 +96,47 @@
         "documentation": {}
     },
     {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
         "importPath": "flask_jwt_extended",
         "description": "flask_jwt_extended",
         "isExtraImport": true,
@@ -168,6 +208,46 @@
         "documentation": {}
     },
     {
+        "label": "SessionBooking",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutSession",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -189,14 +269,6 @@
         "description": "app.schemas.workout_plan_scheduler",
         "isExtraImport": true,
         "detail": "app.schemas.workout_plan_scheduler",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "app",
-        "description": "app",
-        "isExtraImport": true,
-        "detail": "app",
         "documentation": {}
     },
     {
@@ -323,11 +395,56 @@
         "documentation": {}
     },
     {
+        "label": "get_user_bookings",
+        "kind": 2,
+        "importPath": "app.blueprints.bookings",
+        "description": "app.blueprints.bookings",
+        "peekOfCode": "def get_user_bookings():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    bookings = SessionBooking.query.filter_by(client_id=client.id).all()\n    return jsonify([{\n        'id': b.id,\n        'sessionId': b.session_id,\n        'sessionName': b.workout_session.name,",
+        "detail": "app.blueprints.bookings",
+        "documentation": {}
+    },
+    {
+        "label": "create_booking",
+        "kind": 2,
+        "importPath": "app.blueprints.bookings",
+        "description": "app.blueprints.bookings",
+        "peekOfCode": "def create_booking():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    data = request.json\n    session_id = data.get('session_id')\n    if not session_id:\n        return jsonify({'error': 'session_id required'}), 400\n    session = WorkoutSession.query.get(session_id)",
+        "detail": "app.blueprints.bookings",
+        "documentation": {}
+    },
+    {
+        "label": "cancel_booking",
+        "kind": 2,
+        "importPath": "app.blueprints.bookings",
+        "description": "app.blueprints.bookings",
+        "peekOfCode": "def cancel_booking(booking_id):\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    booking = SessionBooking.query.get_or_404(booking_id)\n    if not client or booking.client_id != client.id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    session = booking.workout_session\n    db.session.delete(booking)\n    session.booked_count -= 1\n    db.session.commit()",
+        "detail": "app.blueprints.bookings",
+        "documentation": {}
+    },
+    {
+        "label": "bookings_bp",
+        "kind": 5,
+        "importPath": "app.blueprints.bookings",
+        "description": "app.blueprints.bookings",
+        "peekOfCode": "bookings_bp = Blueprint('bookings', __name__)\n@bookings_bp.rouute('/', methods=['GET'])\n@jwt_required()\ndef get_user_bookings():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    bookings = SessionBooking.query.filter_by(client_id=client.id).all()\n    return jsonify([{",
+        "detail": "app.blueprints.bookings",
+        "documentation": {}
+    },
+    {
         "label": "get_clients",
         "kind": 2,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "def get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()\n    else:\n        clients = Client.query.filter_by(client_id=current_user_id).all()\n    return clients_schema.jsonify(clients), 200\n@clients_bp.route",
+        "peekOfCode": "def get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()\n    else:\n        clients = Client.query.filter_by(client_id=current_user_id).all()\n    return clients_schema.jsonify(clients), 200\n@clients_bp.route('/', methods=['POST'])",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "create_sessopm",
+        "kind": 2,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "def create_sessopm():",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },

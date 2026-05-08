@@ -22,5 +22,9 @@ def get_clients():
         clients = Client.query.filter_by(client_id=current_user_id).all()
     return clients_schema.jsonify(clients), 200
 
-@clients_bp.route  
+@clients_bp.route('/', methods=['POST'])
+@jwt_requireid()
+def create_sessopm():
+    
+
 
