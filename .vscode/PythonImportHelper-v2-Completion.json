@@ -1,5 +1,205 @@
 [
     {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "JWTManager",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "isExtraImport": true,
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "isExtraImport": true,
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "based on your __init__.py",
+        "importPath": "app.models import WorkoutSession. Trainer. User  # adjust",
+        "description": "app.models import WorkoutSession. Trainer. User  # adjust",
+        "isExtraImport": true,
+        "detail": "app.models import WorkoutSession. Trainer. User  # adjust",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutSessionSchema",
+        "importPath": "app.schemas.workout_plan_scheduler",
+        "description": "app.schemas.workout_plan_scheduler",
+        "isExtraImport": true,
+        "detail": "app.schemas.workout_plan_scheduler",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "generate_password_hash",
         "importPath": "werkzeug.security",
         "description": "werkzeug.security",
@@ -13,14 +213,6 @@
         "description": "werkzeug.security",
         "isExtraImport": true,
         "detail": "werkzeug.security",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "app.models.client",
-        "description": "app.models.client",
-        "isExtraImport": true,
-        "detail": "app.models.client",
         "documentation": {}
     },
     {
@@ -65,22 +257,6 @@
         "documentation": {}
     },
     {
-        "label": "JWTManager",
-        "importPath": "flask_jwt_extended",
-        "description": "flask_jwt_extended",
-        "isExtraImport": true,
-        "detail": "flask_jwt_extended",
-        "documentation": {}
-    },
-    {
-        "label": "create_access_token",
-        "importPath": "flask_jwt_extended",
-        "description": "flask_jwt_extended",
-        "isExtraImport": true,
-        "detail": "flask_jwt_extended",
-        "documentation": {}
-    },
-    {
         "label": "Marshmallow",
         "importPath": "flask_marshmallow",
         "description": "flask_marshmallow",
@@ -94,30 +270,6 @@
         "description": "flask_cors",
         "isExtraImport": true,
         "detail": "flask_cors",
-        "documentation": {}
-    },
-    {
-        "label": "Blueprint",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
         "documentation": {}
     },
     {
@@ -150,6 +302,105 @@
         "description": "models.client",
         "isExtraImport": true,
         "detail": "models.client",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "app.blueprints.auth",
+        "description": "app.blueprints.auth",
+        "peekOfCode": "def register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'Email already registered'}), 400\n        user = User(email=data['email'], role=data['role'])\n        user.set_password(data['password'])\n        db.session.add(user)\n        db.session.flush()\n        if data['role'] == 'trainer':\n            profile = trainer(",
+        "detail": "app.blueprints.auth",
+        "documentation": {}
+    },
+    {
+        "label": "auth_bp",
+        "kind": 5,
+        "importPath": "app.blueprints.auth",
+        "description": "app.blueprints.auth",
+        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods=['POST'])\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'Email already registered'}), 400\n        user = User(email=data['email'], role=data['role'])\n        user.set_password(data['password'])\n        db.session.add(user)\n        db.session.flush()",
+        "detail": "app.blueprints.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_clients",
+        "kind": 2,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "def get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()\n    else:\n        clients = Client.query.filter_by(client_id=current_user_id).all()\n    return clients_schema.jsonify(clients), 200\n@clients_bp.route",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "clients_bp",
+        "kind": 5,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "clients_bp = Blueprint('clients', __name__)\nclient_schema = ClientSchema()\nclients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "client_schema",
+        "kind": 5,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "client_schema = ClientSchema()\nclients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "clients_schema",
+        "kind": 5,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "clients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()\n    else:",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "get_sessions",
+        "kind": 2,
+        "importPath": "app.blueprints.sessions",
+        "description": "app.blueprints.sessions",
+        "peekOfCode": "def get_sessions():\n    \"\"\"Get all workout sessions, optionally filtered by date\"\"\"\n    date_str = request.args.get('date')\n    query = WorkoutSession.query\n    if date_str:\n        try:\n            date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()\n            query = query.filter(WorkoutSession.date == date_obj)\n        except:\n            return jsonify({'error': 'Invalid date format'}), 400",
+        "detail": "app.blueprints.sessions",
+        "documentation": {}
+    },
+    {
+        "label": "create_session",
+        "kind": 2,
+        "importPath": "app.blueprints.sessions",
+        "description": "app.blueprints.sessions",
+        "peekOfCode": "def create_session():\n    \"\"\"Only trainers can create sessions\"\"\"\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    if not trainer:\n        return jsonify({'error': 'Only trainers can create sessions'}), 403\n    data = request.json\n    required = ['name', 'date', 'start_time', 'end_time', 'capacity']\n    if not all(k in data for k in required):\n        return jsonify({'error': 'Missing fields'}), 400",
+        "detail": "app.blueprints.sessions",
+        "documentation": {}
+    },
+    {
+        "label": "update_session",
+        "kind": 2,
+        "importPath": "app.blueprints.sessions",
+        "description": "app.blueprints.sessions",
+        "peekOfCode": "def update_session(session_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    session = WorkoutSession.query.get_or_404(session_id)\n    if not trainer or session.trainer_id != trainer.id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    data = request.json\n    if 'name' in data:\n        session.name = data['name']\n    if 'capacity' in data:",
+        "detail": "app.blueprints.sessions",
+        "documentation": {}
+    },
+    {
+        "label": "delete_session",
+        "kind": 2,
+        "importPath": "app.blueprints.sessions",
+        "description": "app.blueprints.sessions",
+        "peekOfCode": "def delete_session(session_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    session = WorkoutSession.query.get_or_404(session_id)\n    if not trainer or session.trainer_id != trainer.id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    db.session.delete(session)\n    db.session.commit()\n    return jsonify({'message': 'Session deleted'})",
+        "detail": "app.blueprints.sessions",
+        "documentation": {}
+    },
+    {
+        "label": "sessions_bp",
+        "kind": 5,
+        "importPath": "app.blueprints.sessions",
+        "description": "app.blueprints.sessions",
+        "peekOfCode": "sessions_bp = Blueprint('sessions', __name__)\n@sessions_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_sessions():\n    \"\"\"Get all workout sessions, optionally filtered by date\"\"\"\n    date_str = request.args.get('date')\n    query = WorkoutSession.query\n    if date_str:\n        try:\n            date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()",
+        "detail": "app.blueprints.sessions",
         "documentation": {}
     },
     {
