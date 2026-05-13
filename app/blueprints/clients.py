@@ -13,18 +13,26 @@ clients_schema = ClientSchema(many=True)
 @clients_bp.route('/', methods=['GET'])
 @jwt_required()
 def get_clients():
+    """Get all clients acceessible to the current user
+    - If user is trainer: return all clients assigned to that trainer
+    - If user is client: return their own client profile
+    - If user is admin: return all cients (if needed)
+    """
+
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
-    if user.role == 'trainer':
-        trainer = Trainer.query.get(current_user_id)
-        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()
-    else:
-        clients = Client.query.filter_by(client_id=current_user_id).all()
-    return clients_schema.jsonify(clients), 200
 
-@clients_bp.route('/', methods=['POST'])
-@jwt_requireid()
-def create_sessopm():
+    if not user:
+        return jsonify({'error:' 'User not found'}), 404
     
-
+    if user.role == 'Trainer':
+        # Assume Trainer model has a relationship to Client via trainer_id
+        trainer = Trainer.query.filter_by(user_id=current_user_id).first()
+        if not trainer:
+            return jsonify({'error': 'Trainer profile not found'}), 404
+        clients = Client.query.filter_by(trainer_id=trainer.id).all()
+    elif user.role == 'client':
+        # Client has direct client profile linked to their user_id
+        client = Client.query.filter_by(user_id=current_user_id).first()
+        
 

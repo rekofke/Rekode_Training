@@ -12,5 +12,5 @@ class Trainer(db.Model):
 
     clients = db.relationship('Client', backref='trainer', lazy=True)
     workout_plans = db.relationship('WorkoutPlan', backref='trainer', lazy=True)
-    session_booking = db.relationship('SessionBooking', backref='trainer', laayzy=True)
+    session_booking = db.relationship('SessionBooking', backref='trainer', lazy=True)
 

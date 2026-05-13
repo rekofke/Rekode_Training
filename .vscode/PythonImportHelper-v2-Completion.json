@@ -120,7 +120,87 @@
         "documentation": {}
     },
     {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
         "importPath": "flask_jwt_extended",
         "description": "flask_jwt_extended",
         "isExtraImport": true,
@@ -232,6 +312,46 @@
         "documentation": {}
     },
     {
+        "label": "ProgressLog",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutPlan",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutExercise",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
         "label": "db",
         "importPath": "app",
         "description": "app",
@@ -241,6 +361,30 @@
     },
     {
         "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
         "importPath": "app",
         "description": "app",
         "isExtraImport": true,
@@ -435,16 +579,7 @@
         "kind": 2,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "def get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()\n    else:\n        clients = Client.query.filter_by(client_id=current_user_id).all()\n    return clients_schema.jsonify(clients), 200\n@clients_bp.route('/', methods=['POST'])",
-        "detail": "app.blueprints.clients",
-        "documentation": {}
-    },
-    {
-        "label": "create_sessopm",
-        "kind": 2,
-        "importPath": "app.blueprints.clients",
-        "description": "app.blueprints.clients",
-        "peekOfCode": "def create_sessopm():",
+        "peekOfCode": "def get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if not user:\n        return jsonify({'error:' 'User not found'}), 404",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },
@@ -453,7 +588,7 @@
         "kind": 5,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "clients_bp = Blueprint('clients', __name__)\nclient_schema = ClientSchema()\nclients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)",
+        "peekOfCode": "clients_bp = Blueprint('clients', __name__)\nclient_schema = ClientSchema()\nclients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },
@@ -462,7 +597,7 @@
         "kind": 5,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "client_schema = ClientSchema()\nclients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()",
+        "peekOfCode": "client_schema = ClientSchema()\nclients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },
@@ -471,8 +606,35 @@
         "kind": 5,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "clients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if user.role == 'trainer':\n        trainer = Trainer.query.get(current_user_id)\n        clients = Client.query.filter_by(trainer_id=trainer.trainer_id).all()\n    else:",
+        "peekOfCode": "clients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    current_user_id = get_jwt_identity()",
         "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "get_progress_logs",
+        "kind": 2,
+        "importPath": "app.blueprints.progress",
+        "description": "app.blueprints.progress",
+        "peekOfCode": "def get_progress_logs():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    logs = ProgressLog.query.filter_by(client_id=client.id).order_by(ProgressLog.date.desc()).all()\n    return jsonify([{\n        'id': l.id,\n        'date': l.date.isoformat(),\n        'weight': l.weight,",
+        "detail": "app.blueprints.progress",
+        "documentation": {}
+    },
+    {
+        "label": "add_progress_log",
+        "kind": 2,
+        "importPath": "app.blueprints.progress",
+        "description": "app.blueprints.progress",
+        "peekOfCode": "def add_progress_log():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    data = request.json\n    log = ProgressLog(\n        client_id=client.id,\n        weight=data.get('weight'),\n        body_fat=data.get('body_fat'),",
+        "detail": "app.blueprints.progress",
+        "documentation": {}
+    },
+    {
+        "label": "progress_bp",
+        "kind": 5,
+        "importPath": "app.blueprints.progress",
+        "description": "app.blueprints.progress",
+        "peekOfCode": "progress_bp = Blueprint('progress', __name__)\n@progress_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_progress_logs():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    logs = ProgressLog.query.filter_by(client_id=client.id).order_by(ProgressLog.date.desc()).all()\n    return jsonify([{",
+        "detail": "app.blueprints.progress",
         "documentation": {}
     },
     {
@@ -521,6 +683,42 @@
         "documentation": {}
     },
     {
+        "label": "get_workout_plans",
+        "kind": 2,
+        "importPath": "app.blueprints.workouts",
+        "description": "app.blueprints.workouts",
+        "peekOfCode": "def get_workout_plans():\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    if not trainer:\n        return jsonify({'error': 'Only trainers can access'}), 403\n    plans = WorkoutPlan.query.filter_by(trainer_id=trainer.id).all()\n    return jsonify([{'id': p.id, 'name': p.name, 'description': p.description} for p in plans])\n@workouts_bp.route('/plans', methods=['POST'])\n@jwt_required()\ndef create_workout_plan():",
+        "detail": "app.blueprints.workouts",
+        "documentation": {}
+    },
+    {
+        "label": "create_workout_plan",
+        "kind": 2,
+        "importPath": "app.blueprints.workouts",
+        "description": "app.blueprints.workouts",
+        "peekOfCode": "def create_workout_plan():\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    if not trainer:\n        return jsonify({'error': 'Only trainers can access'}), 403\n    data = request.json\n    plan = WorkoutPlan(name=data['name'], description=data.get('description'), trainer_id=trainer.id)\n    db.session.add(plan)\n    db.session.commit()\n    return jsonify({'id': plan.id, 'message': 'Plan created'}), 201",
+        "detail": "app.blueprints.workouts",
+        "documentation": {}
+    },
+    {
+        "label": "add_exercise_to_plan",
+        "kind": 2,
+        "importPath": "app.blueprints.workouts",
+        "description": "app.blueprints.workouts",
+        "peekOfCode": "def add_exercise_to_plan(plan_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    plan = WorkoutPlan.query.get_or_404(plan_id)\n    if plan.trainer_id != trainer.id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    data = request.json\n    exercise = WorkoutExercise(\n        workout_plan_id=plan_id,\n        name=data['name'],",
+        "detail": "app.blueprints.workouts",
+        "documentation": {}
+    },
+    {
+        "label": "workouts_bp",
+        "kind": 5,
+        "importPath": "app.blueprints.workouts",
+        "description": "app.blueprints.workouts",
+        "peekOfCode": "workouts_bp = Blueprint('workouts', __name__)\n#______Workout Plans______#\n@workouts_bp.route('/sessions', methods=['GET'])\n@jwt_required()\ndef get_workout_plans():\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    if not trainer:\n        return jsonify({'error': 'Only trainers can access'}), 403\n    plans = WorkoutPlan.query.filter_by(trainer_id=trainer.id).all()",
+        "detail": "app.blueprints.workouts",
+        "documentation": {}
+    },
+    {
         "label": "Client",
         "kind": 6,
         "importPath": "app.models.client",
@@ -561,7 +759,7 @@
         "kind": 6,
         "importPath": "app.models.user",
         "description": "app.models.user",
-        "peekOfCode": "class User(db.Model):\n    __tablename__ = 'users'\n    user_id = db.columb(db.Integer, primary_key=True)\n    email = db.column(db.String(120), unique=True, nullable=False)\n    passwrd_hash = db.column(db.String(120), nullable=False)\n    role = db.column(db.String(120),nullable=False) # 'Trainer' or 'Client'\n    created_at = db.column(db.DateTime, server_default=db.func.now())\n    def set_password(self, password):\n        self.password_hash = generate_password_hash(password)\n    def check_password(self, password):",
+        "peekOfCode": "class User(db.Model):\n    __tablename__ = 'users'\n    user_id = db.Column(db.Integer, primary_key=True)# \n    email = db.Column(db.String(120), unique=True, nullable=False)\n    password_hash = db.Column(db.String(120), nullable=False)\n    role = db.Column(db.String(120),nullable=False) # 'Trainer' or 'Client'\n    created_at = db.Column(db.DateTime, server_default=db.func.now())\n    def set_password(self, password):\n        self.password_hash = generate_password_hash(password)\n    def check_password(self, password):",
         "detail": "app.models.user",
         "documentation": {}
     },
@@ -725,6 +923,15 @@
         "description": "auth",
         "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods='POST')\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()",
         "detail": "auth",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "app = create_app()\nif __name__ == '__main__':\n    app.run(debug=True, port=5000)",
+        "detail": "run",
         "documentation": {}
     }
 ]
