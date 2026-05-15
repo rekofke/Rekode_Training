@@ -2,7 +2,7 @@ from ..extensions import db
 
 class Trainer(db.Model):
     __tablename__ = 'trainers'
-    trainer_id = db.Column (db.Integer, db.ForeignKey('users.user_id'), primary_key=True)
+    trainer_id = db.Column (db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     specialization = db.Column(db.String(100))
@@ -12,5 +12,5 @@ class Trainer(db.Model):
 
     clients = db.relationship('Client', backref='trainer', lazy=True)
     workout_plans = db.relationship('WorkoutPlan', backref='trainer', lazy=True)
-    session_booking = db.relationship('SessionBooking', backref='trainer', lazy=True)
+
 

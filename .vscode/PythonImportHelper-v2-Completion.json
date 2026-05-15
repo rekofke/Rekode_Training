@@ -288,67 +288,43 @@
         "documentation": {}
     },
     {
-        "label": "SessionBooking",
-        "importPath": "app.models",
-        "description": "app.models",
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
         "isExtraImport": true,
-        "detail": "app.models",
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "isExtraImport": true,
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "SessionBooking",
+        "importPath": "app.models.session_booking",
+        "description": "app.models.session_booking",
+        "isExtraImport": true,
+        "detail": "app.models.session_booking",
         "documentation": {}
     },
     {
         "label": "WorkoutSession",
-        "importPath": "app.models",
-        "description": "app.models",
+        "importPath": "app.models.workout_session",
+        "description": "app.models.workout_session",
         "isExtraImport": true,
-        "detail": "app.models",
+        "detail": "app.models.workout_session",
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "app.models",
-        "description": "app.models",
+        "label": "WorkoutSession",
+        "importPath": "app.models.workout_session",
+        "description": "app.models.workout_session",
         "isExtraImport": true,
-        "detail": "app.models",
-        "documentation": {}
-    },
-    {
-        "label": "ProgressLog",
-        "importPath": "app.models",
-        "description": "app.models",
-        "isExtraImport": true,
-        "detail": "app.models",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "app.models",
-        "description": "app.models",
-        "isExtraImport": true,
-        "detail": "app.models",
-        "documentation": {}
-    },
-    {
-        "label": "WorkoutPlan",
-        "importPath": "app.models",
-        "description": "app.models",
-        "isExtraImport": true,
-        "detail": "app.models",
-        "documentation": {}
-    },
-    {
-        "label": "WorkoutExercise",
-        "importPath": "app.models",
-        "description": "app.models",
-        "isExtraImport": true,
-        "detail": "app.models",
-        "documentation": {}
-    },
-    {
-        "label": "Trainer",
-        "importPath": "app.models",
-        "description": "app.models",
-        "isExtraImport": true,
-        "detail": "app.models",
+        "detail": "app.models.workout_session",
         "documentation": {}
     },
     {
@@ -392,6 +368,46 @@
         "documentation": {}
     },
     {
+        "label": "ProgressLog",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutPlan",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkoutExercise",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -400,35 +416,27 @@
         "documentation": {}
     },
     {
-        "label": "based on your __init__.py",
-        "importPath": "app.models import WorkoutSession. Trainer. User  # adjust",
-        "description": "app.models import WorkoutSession. Trainer. User  # adjust",
+        "label": "Trainer",
+        "importPath": "app.models.trainer",
+        "description": "app.models.trainer",
         "isExtraImport": true,
-        "detail": "app.models import WorkoutSession. Trainer. User  # adjust",
+        "detail": "app.models.trainer",
         "documentation": {}
     },
     {
-        "label": "WorkoutSessionSchema",
-        "importPath": "app.schemas.workout_plan_scheduler",
-        "description": "app.schemas.workout_plan_scheduler",
+        "label": "Trainer",
+        "importPath": "app.models.trainer",
+        "description": "app.models.trainer",
         "isExtraImport": true,
-        "detail": "app.schemas.workout_plan_scheduler",
+        "detail": "app.models.trainer",
         "documentation": {}
     },
     {
-        "label": "generate_password_hash",
-        "importPath": "werkzeug.security",
-        "description": "werkzeug.security",
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "werkzeug.security",
-        "documentation": {}
-    },
-    {
-        "label": "check_password_hash",
-        "importPath": "werkzeug.security",
-        "description": "werkzeug.security",
-        "isExtraImport": true,
-        "detail": "werkzeug.security",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
@@ -465,6 +473,14 @@
         "documentation": {}
     },
     {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
         "label": "SQLAlchemy",
         "importPath": "flask_sqlalchemy",
         "description": "flask_sqlalchemy",
@@ -490,34 +506,18 @@
     },
     {
         "label": "db",
-        "importPath": "extensions",
-        "description": "extensions",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
         "isExtraImport": true,
-        "detail": "extensions",
+        "detail": "app.extensions",
         "documentation": {}
     },
     {
         "label": "User",
-        "importPath": "models.user",
-        "description": "models.user",
+        "importPath": "app.models.user",
+        "description": "app.models.user",
         "isExtraImport": true,
-        "detail": "models.user",
-        "documentation": {}
-    },
-    {
-        "label": "Trainer",
-        "importPath": "models.trainer",
-        "description": "models.trainer",
-        "isExtraImport": true,
-        "detail": "models.trainer",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "models.client",
-        "description": "models.client",
-        "isExtraImport": true,
-        "detail": "models.client",
+        "detail": "app.models.user",
         "documentation": {}
     },
     {
@@ -570,7 +570,7 @@
         "kind": 5,
         "importPath": "app.blueprints.bookings",
         "description": "app.blueprints.bookings",
-        "peekOfCode": "bookings_bp = Blueprint('bookings', __name__)\n@bookings_bp.rouute('/', methods=['GET'])\n@jwt_required()\ndef get_user_bookings():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    bookings = SessionBooking.query.filter_by(client_id=client.id).all()\n    return jsonify([{",
+        "peekOfCode": "bookings_bp = Blueprint('bookings', __name__)\n@bookings_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_user_bookings():\n    user_id = get_jwt_identity()\n    client = Client.query.filter_by(user_id=user_id).first()\n    if not client:\n        return jsonify({'error': 'Client profile not found'}), 404\n    bookings = SessionBooking.query.filter_by(client_id=client.id).all()\n    return jsonify([{",
         "detail": "app.blueprints.bookings",
         "documentation": {}
     },
@@ -651,7 +651,7 @@
         "kind": 2,
         "importPath": "app.blueprints.sessions",
         "description": "app.blueprints.sessions",
-        "peekOfCode": "def create_session():\n    \"\"\"Only trainers can create sessions\"\"\"\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    if not trainer:\n        return jsonify({'error': 'Only trainers can create sessions'}), 403\n    data = request.json\n    required = ['name', 'date', 'start_time', 'end_time', 'capacity']\n    if not all(k in data for k in required):\n        return jsonify({'error': 'Missing fields'}), 400",
+        "peekOfCode": "def create_session():\n    \"\"\"Only trainers can create sessions\"\"\"\n    user_id = get_jwt_identity()\n    # Assuming Trainer model has a user_id foreign key; adjust as needed\n    trainer = Trainer.query.filter_by(trainer_id=user_id).first()\n    if not trainer:\n        return jsonify({'error': 'Only trainers can create sessions'}), 403\n    data = request.json\n    required = ['name', 'date', 'startTime', 'endTime', 'capacity']\n    if not all(k in data for k in required):",
         "detail": "app.blueprints.sessions",
         "documentation": {}
     },
@@ -660,7 +660,7 @@
         "kind": 2,
         "importPath": "app.blueprints.sessions",
         "description": "app.blueprints.sessions",
-        "peekOfCode": "def update_session(session_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    session = WorkoutSession.query.get_or_404(session_id)\n    if not trainer or session.trainer_id != trainer.id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    data = request.json\n    if 'name' in data:\n        session.name = data['name']\n    if 'capacity' in data:",
+        "peekOfCode": "def update_session(session_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(trainer_id=user_id).first()\n    session = WorkoutSession.query.get_or_404(session_id)\n    if not trainer or session.trainer_id != trainer.trainer_id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    data = request.json\n    if 'name' in data:\n        session.name = data['name']\n    if 'capacity' in data:",
         "detail": "app.blueprints.sessions",
         "documentation": {}
     },
@@ -669,7 +669,7 @@
         "kind": 2,
         "importPath": "app.blueprints.sessions",
         "description": "app.blueprints.sessions",
-        "peekOfCode": "def delete_session(session_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(user_id=user_id).first()\n    session = WorkoutSession.query.get_or_404(session_id)\n    if not trainer or session.trainer_id != trainer.id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    db.session.delete(session)\n    db.session.commit()\n    return jsonify({'message': 'Session deleted'})",
+        "peekOfCode": "def delete_session(session_id):\n    user_id = get_jwt_identity()\n    trainer = Trainer.query.filter_by(trainer_id=user_id).first()\n    session = WorkoutSession.query.get_or_404(session_id)\n    if not trainer or session.trainer_id != trainer.trainer_id:\n        return jsonify({'error': 'Unauthorized'}), 403\n    db.session.delete(session)\n    db.session.commit()\n    return jsonify({'message': 'Session deleted'}), 200",
         "detail": "app.blueprints.sessions",
         "documentation": {}
     },
@@ -723,7 +723,7 @@
         "kind": 6,
         "importPath": "app.models.client",
         "description": "app.models.client",
-        "peekOfCode": "class Client(db.Model):\n    __tablename__ = 'clients'\n    client_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), primary_key=True)\n    first_name = db.Column(db.String(50), nullable=False)\n    last_name = db.Column(db.String(50), nullable=False)\n    phone = db.Column(db.String(20))\n    date_of_birth = db.Column(db.Date)\n    fitness_goals = db.Column(db.Text)\n    is_active = db.Column(db.Boolean, default=True)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'))",
+        "peekOfCode": "class Client(db.Model):\n    __tablename__ = 'clients'\n    id = db.Column(db.Integer, primary_key=True)\n    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), unique=True)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'))\n    name = db.Column(db.String(100))\n    email = db.Column(db.String(120))\n    phone = db.Column(db.String(20))\n    membership_type = db.Column(db.String(50))\n    # Relationships",
         "detail": "app.models.client",
         "documentation": {}
     },
@@ -732,7 +732,7 @@
         "kind": 6,
         "importPath": "app.models.progress_log",
         "description": "app.models.progress_log",
-        "peekOfCode": "class ProgressLog(db.Model):\n    __tablename__ = 'progress_logs'\n    log_id  = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)\n    date = db.Column(db.Date, server_default-db.func.current_date())\n    weight_kg = db.Column(db.Numberic(5, 2))\n    body_fat_percentage = db.Column(db.Numberic(4, 2))\n    Measurements = db.Column(db.JSON) # EG {\"chest\":100, \"waist\":80, \"hips\":90}\n    notes = db.Column(db.Text)",
+        "peekOfCode": "class ProgressLog(db.Model):\n    __tablename__ = 'progress_logs'\n    id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'), nullable=False)\n    date = db.Column(db.Date, server_default=func.current_date())\n    weight = db.Column(db.Float)\n    body_fat = db.Column(db.Float)\n    notes = db.Column(db.Text)\n    # No explicit relationship; the backref from Client.progress_logs provides 'client'",
         "detail": "app.models.progress_log",
         "documentation": {}
     },
@@ -741,7 +741,7 @@
         "kind": 6,
         "importPath": "app.models.session_booking",
         "description": "app.models.session_booking",
-        "peekOfCode": "class SessionBooking(db.Model):\n    __tablename__ = 'session_bookings'\n    booking_id = db.Column(db.Integer, primary_key=True)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    client_id = db.Column(db.Integer('clients.client_id'), nullable=False)\n    datetime = db.Column(db.DateTime, nullable=False)\n    duraton_minutes = db.Column(db.Integer, default=60)\n    status = db.Column(db.String(20), default='Scheduled') # scheduled, completed, cancelled\n    notes = db.Column(db.Text)",
+        "peekOfCode": "class SessionBooking(db.Model):\n    __tablename__ = 'session_bookings'\n    id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'), nullable=False)\n    session_id = db.Column(db.Integer, db.ForeignKey('workout_sessions.id'), nullable=False)\n    booking_date = db.Column(db.DateTime, default=db.func.current_timestamp())\n    # Relationships\n    # No need for explicit relationship; the backref from WorkoutSession will provide it.",
         "detail": "app.models.session_booking",
         "documentation": {}
     },
@@ -750,7 +750,7 @@
         "kind": 6,
         "importPath": "app.models.trainer",
         "description": "app.models.trainer",
-        "peekOfCode": "class Trainer(db.Model):\n    __tablename__ = 'trainers'\n    trainer_id = db.Column (db.Integer, db.ForeignKey('users.user_id'), primary_key=True)\n    first_name = db.Column(db.String(50), nullable=False)\n    last_name = db.Column(db.String(50), nullable=False)\n    specialization = db.Column(db.String(100))\n    bio = db.Column(db.Text)\n    hourly_rate = db.Column(db.Numeric(10, 2))\n    certifications = db.Column(db.Text)\n    clients = db.relationship('Client', backref='trainer', lazy=True)",
+        "peekOfCode": "class Trainer(db.Model):\n    __tablename__ = 'trainers'\n    trainer_id = db.Column (db.Integer, primary_key=True)\n    first_name = db.Column(db.String(50), nullable=False)\n    last_name = db.Column(db.String(50), nullable=False)\n    specialization = db.Column(db.String(100))\n    bio = db.Column(db.Text)\n    hourly_rate = db.Column(db.Numeric(10, 2))\n    certifications = db.Column(db.Text)\n    clients = db.relationship('Client', backref='trainer', lazy=True)",
         "detail": "app.models.trainer",
         "documentation": {}
     },
@@ -759,7 +759,7 @@
         "kind": 6,
         "importPath": "app.models.user",
         "description": "app.models.user",
-        "peekOfCode": "class User(db.Model):\n    __tablename__ = 'users'\n    user_id = db.Column(db.Integer, primary_key=True)# \n    email = db.Column(db.String(120), unique=True, nullable=False)\n    password_hash = db.Column(db.String(120), nullable=False)\n    role = db.Column(db.String(120),nullable=False) # 'Trainer' or 'Client'\n    created_at = db.Column(db.DateTime, server_default=db.func.now())\n    def set_password(self, password):\n        self.password_hash = generate_password_hash(password)\n    def check_password(self, password):",
+        "peekOfCode": "class User(db.Model):\n    __tablename__ = 'users'\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(120), unique=True, nullable=False)\n    password_hash = db.Column(db.String(200), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    role = db.Column(db.String(20), default='member')",
         "detail": "app.models.user",
         "documentation": {}
     },
@@ -768,7 +768,7 @@
         "kind": 6,
         "importPath": "app.models.workout_exercise",
         "description": "app.models.workout_exercise",
-        "peekOfCode": "class WorkoutExercise(db.Model):\n    __table__ = 'workout_exercise'\n    exercise_id = db.Column(db.Integer, primary_key=True)\n    plan_id = db.Column(db.Integer, db.ForeignKey('workout_plans.plan_id'), nullable=False)\n    exercise_name = db.Column(db.String(100), nullable=False)\n    sets = db.Column(db.Integer)\n    reps = db.Column(db.Integer)\n    weight = db.Column(db.String(20)) # e.g. \"50 kg\" or \"bodyweight\"\n    notes = db.Column(db.StringO(200))",
+        "peekOfCode": "class WorkoutExercise(db.Model):\n    __tablename__ = 'workout_exercises'\n    id = db.Column(db.Integer, primary_key=True)\n    workout_plan_id = db.Column(db.Integer, db.ForeignKey('workout_plans.plan_id'), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    sets = db.Column(db.Integer, default=3)\n    reps = db.Column(db.Integer, default=10)\n    rest_seconds = db.Column(db.Integer, default=60)\n    notes = db.Column(db.String(200))\n    # No explicit relationship here; it's provided by the backref in WorkoutPlan.exercises",
         "detail": "app.models.workout_exercise",
         "documentation": {}
     },
@@ -777,7 +777,7 @@
         "kind": 6,
         "importPath": "app.models.workout_plan",
         "description": "app.models.workout_plan",
-        "peekOfCode": "class WorkoutPlan(db.Model):\n    __tablename__ = 'workout_plans'\n    plan_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.Text)\n    start_date = db.Column(db.Date)\n    end_date = db.Column(db.Date)\n    exercises = db.relationship('WorkoutExercise', backref='plan', lazy=True, cascade='all, delete-orphan')",
+        "peekOfCode": "class WorkoutPlan(db.Model):\n    __tablename__ = 'workout_plans'\n    plan_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'), nullable=False)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.Text)\n    start_date = db.Column(db.Date)\n    end_date = db.Column(db.Date)\n    exercises = db.relationship('WorkoutExercise', backref='workout_plan', lazy=True, cascade='all, delete-orphan')",
         "detail": "app.models.workout_plan",
         "documentation": {}
     },
@@ -786,16 +786,16 @@
         "kind": 6,
         "importPath": "app.models.workout_session",
         "description": "app.models.workout_session",
-        "peekOfCode": "class WorkoutSession(db.Model):\n    __tablename_ = 'Workout_sessions'\n    session_id = db.Column(db.Integer, primary_key=True)\n    client_id = db.Column(db.Integer, ForeignKey=True)\n    plan_id = db.Column(db.Integer, ForeignKey=True)\n    dae = db.Column(db.Date, server_default=db.func.now())\n    completed = db.Column(db.Boolean, default=True)\n    duration_minutes = db.Column(db.Integer)\n    notes = db.Column(db.Text)",
+        "peekOfCode": "class WorkoutSession(db.Model):\n    __tablename__ = 'workout_sessions'\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(100), nullable=False)\n    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.trainer_id'), nullable=False)\n    plan_id = db.Column(db.Integer, db.ForeignKey('workout_plans.plan_id'), nullable=True)\n    date = db.Column(db.Date, nullable=False)\n    start_time = db.Column(db.Time, nullable=False)\n    end_time = db.Column(db.Time, nullable=False)\n    capacity = db.Column(db.Integer, default=15)",
         "detail": "app.models.workout_session",
         "documentation": {}
     },
     {
-        "label": "CleintSchema",
+        "label": "ClientSchema",
         "kind": 6,
         "importPath": "app.schemas.client_schema",
         "description": "app.schemas.client_schema",
-        "peekOfCode": "class CleintSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = Client\n        load_instance = True\n        include_fk = True",
+        "peekOfCode": "class ClientSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = Client\n        load_instance = True\n        include_fk = True",
         "detail": "app.schemas.client_schema",
         "documentation": {}
     },
@@ -923,6 +923,15 @@
         "description": "auth",
         "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods='POST')\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()",
         "detail": "auth",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "class Config:\n    SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key')\n    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///rekode.db')\n    SQLALCHEMY_TRACK_MODIFICATIONS = False\n    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'jwt-dev-secret')",
+        "detail": "config",
         "documentation": {}
     },
     {
