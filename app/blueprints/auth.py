@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
-from app.models.client import Client
+from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db
 from ..models.user import User
 from ..models.trainer import Trainer
@@ -14,35 +14,39 @@ def register():
     if User.query.filter_by(email=data['email']).first():
         return jsonify({'error': 'Email already registered'}), 400
 
-        user = User(email=data['email'], role=data['role'])
-        user.set_password(data['password'])
-        db.session.add(user)
-        db.session.flush()
+    user = User(
+        email=data['email'],
+        role=data.get('role', 'client'),
+        name=data['name'],
+        password_hash=generate_password_hash(data['password'])
+    )
+    db.session.add(user)
+    db.session.flush()
 
-        if data['role'] == 'trainer':
-            profile = trainer(
-                trainer_id=user.user_id,
-                first_name=data['first_name'],
-                last_name=data['last_name'],
-                specialization=data.get('specialization', '') 
-            )
-        else:
-            profile = Client(
-                client_id=user.user_id,
-                first_name=data['first_name'],
-                last_name=data['last_name'],
-                phone=data.get('phone'),
-                trainer_id=data.get('trainer_id') 
-            )
-        db.session.data(profile)
-        db.session.commit()
-        return jsonify({'message': 'User created'}), 201
+    if data['role'] == 'trainer':
+        profile = Trainer(
+            trainer_id=user.id,  # assuming Trainer.trainer_id references User.id
+            first_name=data.get('first_name', ''),
+            last_name=data.get('last_name', ''),
+            specialization=data.get('specialization', '')
+        )
+    else:
+        profile = Client(
+            user_id=user.id,  # Client.user_id references User.id
+            name=data.get('name', ''),
+            email=data['email'],
+            phone=data.get('phone', ''),
+            membership_type=data.get('membership_type', 'basic')
+        )
+    db.session.add(profile)
+    db.session.commit()
+    return jsonify({'message': 'User created'}), 201
 
-    @auth_bp.route('/login', methods=['POST'])
-    def login():
-        data = request.json
-        user = User.query.filter_by(email=data['email']).first()
-        if not user or not user.check_password(data['password']):
-            return jsonify({'error': 'Invalid credentials'}), 401
-        token = create_access_token(identify=user.user_id)
-        return jsonify({'access_token': token, 'role': user.role}), 200
+@auth_bp.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    user = User.query.filter_by(email=data['email']).first()
+    if not user or not check_password_hash(user.password_hash, data['password']):
+        return jsonify({'error': 'Invalid credentials'}), 401
+    token = create_access_token(identity=user.id)  # use user.id (primary key)
+    return jsonify({'access_token': token, 'user': {'id': user.id, 'email': user.email, 'name': user.name, 'role': user.role}}), 200

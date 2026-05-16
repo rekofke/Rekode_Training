@@ -272,35 +272,19 @@
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "app.models.client",
-        "description": "app.models.client",
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
         "isExtraImport": true,
-        "detail": "app.models.client",
+        "detail": "werkzeug.security",
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "app.models.client",
-        "description": "app.models.client",
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
         "isExtraImport": true,
-        "detail": "app.models.client",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "app.models.client",
-        "description": "app.models.client",
-        "isExtraImport": true,
-        "detail": "app.models.client",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "app.models.client",
-        "description": "app.models.client",
-        "isExtraImport": true,
-        "detail": "app.models.client",
+        "detail": "werkzeug.security",
         "documentation": {}
     },
     {
@@ -325,6 +309,30 @@
         "description": "app.models.workout_session",
         "isExtraImport": true,
         "detail": "app.models.workout_session",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "isExtraImport": true,
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "isExtraImport": true,
+        "detail": "app.models.client",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models.client",
+        "description": "app.models.client",
+        "isExtraImport": true,
+        "detail": "app.models.client",
         "documentation": {}
     },
     {
@@ -440,6 +448,22 @@
         "documentation": {}
     },
     {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
         "label": "fields",
         "importPath": "marshmallow",
         "description": "marshmallow",
@@ -505,14 +529,6 @@
         "documentation": {}
     },
     {
-        "label": "db",
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "isExtraImport": true,
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
         "label": "User",
         "importPath": "app.models.user",
         "description": "app.models.user",
@@ -525,7 +541,16 @@
         "kind": 2,
         "importPath": "app.blueprints.auth",
         "description": "app.blueprints.auth",
-        "peekOfCode": "def register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'Email already registered'}), 400\n        user = User(email=data['email'], role=data['role'])\n        user.set_password(data['password'])\n        db.session.add(user)\n        db.session.flush()\n        if data['role'] == 'trainer':\n            profile = trainer(",
+        "peekOfCode": "def register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'Email already registered'}), 400\n    user = User(\n        email=data['email'],\n        role=data.get('role', 'client'),\n        name=data['name'],\n        password_hash=generate_password_hash(data['password'])\n    )",
+        "detail": "app.blueprints.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app.blueprints.auth",
+        "description": "app.blueprints.auth",
+        "peekOfCode": "def login():\n    data = request.json\n    user = User.query.filter_by(email=data['email']).first()\n    if not user or not check_password_hash(user.password_hash, data['password']):\n        return jsonify({'error': 'Invalid credentials'}), 401\n    token = create_access_token(identity=user.id)  # use user.id (primary key)\n    return jsonify({'access_token': token, 'user': {'id': user.id, 'email': user.email, 'name': user.name, 'role': user.role}}), 200",
         "detail": "app.blueprints.auth",
         "documentation": {}
     },
@@ -534,7 +559,7 @@
         "kind": 5,
         "importPath": "app.blueprints.auth",
         "description": "app.blueprints.auth",
-        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods=['POST'])\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'Email already registered'}), 400\n        user = User(email=data['email'], role=data['role'])\n        user.set_password(data['password'])\n        db.session.add(user)\n        db.session.flush()",
+        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods=['POST'])\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'Email already registered'}), 400\n    user = User(\n        email=data['email'],\n        role=data.get('role', 'client'),\n        name=data['name'],",
         "detail": "app.blueprints.auth",
         "documentation": {}
     },
@@ -903,7 +928,7 @@
         "kind": 2,
         "importPath": "auth",
         "description": "auth",
-        "peekOfCode": "def register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()\n    if data['role'] == 'trainer':\n        profile = Trainer(",
+        "peekOfCode": "def register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()  # to get user.user_id\n    if data['role'] == 'trainer':\n        profile = Trainer(",
         "detail": "auth",
         "documentation": {}
     },
@@ -912,7 +937,7 @@
         "kind": 2,
         "importPath": "auth",
         "description": "auth",
-        "peekOfCode": "def login():\n    data = request.json\n    user = User.query.filter_by(email=data['email']).first()\n    if not user or not user.check_password(data['password']):\n        return jsonify({'error': 'Invalid credentials'}), 401\n    token = create_access_token(identity=user.user_id)\n    return jsonify({'access_token': token, 'role': user.role}), 200",
+        "peekOfCode": "def login():\n    data = request.json\n    user = User.query.filter_by(email=data['email']).first()\n    # Use the model's check_password method if exists, else use werkzeug\n    if not user or not user.check_password(data['password']):\n        return jsonify({'error': 'Invalid credentials'}), 401\n    access_token = create_access_token(identity=user.user_id)\n    return jsonify({\n        'access_token': access_token,\n        'user': {",
         "detail": "auth",
         "documentation": {}
     },
@@ -921,7 +946,7 @@
         "kind": 5,
         "importPath": "auth",
         "description": "auth",
-        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods='POST')\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()",
+        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/register', methods=['POST'])  # fixed methods list\ndef register():\n    data = request.json\n    if User.query.filter_by(email=data['email']).first():\n        return jsonify({'error': 'email already used'}), 400\n    user = User(email=data['email'], role=data['role'])\n    user.set_password(data['password'])\n    db.session.add(user)\n    db.session.flush()  # to get user.user_id",
         "detail": "auth",
         "documentation": {}
     },
@@ -939,7 +964,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "app = create_app()\nif __name__ == '__main__':\n    app.run(debug=True, port=5000)",
+        "peekOfCode": "app = create_app()\nif __name__ == '__main__':\n    app.run(debug=True, port=5001)",
         "detail": "run",
         "documentation": {}
     }
