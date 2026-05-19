@@ -12,6 +12,7 @@ def create_app():
     
     db.init_app(app)
     jwt.init_app(app)
+    ma.init_app(app)
     
     # Allow all origins for development (or specify your frontend origin)
     CORS(app)
