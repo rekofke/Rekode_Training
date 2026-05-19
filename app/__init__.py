@@ -1,9 +1,8 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
-from flask_cors import CORS
-from flask_marshmallow import Marshmallow
+from flask_cors import CORS 
 from config import Config
-from .extensions import db, ma
+from .extensions import db
 
 jwt = JWTManager()
 
@@ -13,7 +12,6 @@ def create_app():
     
     db.init_app(app)
     jwt.init_app(app)
-    ma.init_app(app)
     
     # Allow all origins for development (or specify your frontend origin)
     CORS(app)

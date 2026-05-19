@@ -4,7 +4,7 @@ from ..extensions import db
 from ..models.user import User
 from ..models.client import Client
 from ..models.trainer import Trainer
-from ..schemas.client_schema import ClientSchema
+
 
 clients_bp = Blueprint('clients', __name__)
 client_schema = ClientSchema()
@@ -18,6 +18,14 @@ def get_clients():
     - If user is client: return their own client profile
     - If user is admin: return all cients (if needed)
     """
+    clients = Client.query.filter_by(...).all()
+    return jsonify([{
+        'id': c.id,
+        'name': c.name,
+        'email': c.email,
+        'phone': c.phone
+    } for c in clients])
+
 
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)

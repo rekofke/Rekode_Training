@@ -328,14 +328,6 @@
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "app.models.client",
-        "description": "app.models.client",
-        "isExtraImport": true,
-        "detail": "app.models.client",
-        "documentation": {}
-    },
-    {
         "label": "db",
         "importPath": "app",
         "description": "app",
@@ -472,22 +464,6 @@
         "documentation": {}
     },
     {
-        "label": "fields",
-        "importPath": "marshmallow",
-        "description": "marshmallow",
-        "isExtraImport": true,
-        "detail": "marshmallow",
-        "documentation": {}
-    },
-    {
-        "label": "fields",
-        "importPath": "marshmallow",
-        "description": "marshmallow",
-        "isExtraImport": true,
-        "detail": "marshmallow",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -518,14 +494,6 @@
         "description": "flask_sqlalchemy",
         "isExtraImport": true,
         "detail": "flask_sqlalchemy",
-        "documentation": {}
-    },
-    {
-        "label": "Marshmallow",
-        "importPath": "flask_marshmallow",
-        "description": "flask_marshmallow",
-        "isExtraImport": true,
-        "detail": "flask_marshmallow",
         "documentation": {}
     },
     {
@@ -604,7 +572,7 @@
         "kind": 2,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "def get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if not user:\n        return jsonify({'error:' 'User not found'}), 404",
+        "peekOfCode": "def get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    clients = Client.query.filter_by(...).all()\n    return jsonify([{\n        'id': c.id,\n        'name': c.name,",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },
@@ -631,7 +599,7 @@
         "kind": 5,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "clients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    current_user_id = get_jwt_identity()",
+        "peekOfCode": "clients_schema = ClientSchema(many=True)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    clients = Client.query.filter_by(...).all()",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },
@@ -816,69 +784,6 @@
         "documentation": {}
     },
     {
-        "label": "ClientSchema",
-        "kind": 6,
-        "importPath": "app.schemas.client_schema",
-        "description": "app.schemas.client_schema",
-        "peekOfCode": "class ClientSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = Client\n        load_instance = True\n        include_fk = True",
-        "detail": "app.schemas.client_schema",
-        "documentation": {}
-    },
-    {
-        "label": "ProgressLogsSchema",
-        "kind": 6,
-        "importPath": "app.schemas.progress_log_schema",
-        "description": "app.schemas.progress_log_schema",
-        "peekOfCode": "class ProgressLogsSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = ProgressLog\n        load_instance = True\n        include_fk = True",
-        "detail": "app.schemas.progress_log_schema",
-        "documentation": {}
-    },
-    {
-        "label": "SessionBookingSchema",
-        "kind": 6,
-        "importPath": "app.schemas.session_booking_schema",
-        "description": "app.schemas.session_booking_schema",
-        "peekOfCode": "class SessionBookingSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = SessionBooking\n        load_instanc = True\n        include_fk = True",
-        "detail": "app.schemas.session_booking_schema",
-        "documentation": {}
-    },
-    {
-        "label": "TrainerSchema",
-        "kind": 6,
-        "importPath": "app.schemas.trainer_schema",
-        "description": "app.schemas.trainer_schema",
-        "peekOfCode": "class TrainerSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = Trainer\n        load_instance = True",
-        "detail": "app.schemas.trainer_schema",
-        "documentation": {}
-    },
-    {
-        "label": "UserSchema",
-        "kind": 6,
-        "importPath": "app.schemas.user_schema",
-        "description": "app.schemas.user_schema",
-        "peekOfCode": "class UserSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = User\n        load_instance = True\n        exclued = ('password_hash')\n    password = fields.string(load_only=True, required=True)",
-        "detail": "app.schemas.user_schema",
-        "documentation": {}
-    },
-    {
-        "label": "WorkoutExerciseSchema",
-        "kind": 6,
-        "importPath": "app.schemas.workout_plan_schema",
-        "description": "app.schemas.workout_plan_schema",
-        "peekOfCode": "class WorkoutExerciseSchema(ma.SQLAlchemyAutoSchema):\n    class Meta:\n        model = WorkoutExercise\n        load_instance = True\n        include_fk = True\nclass WorkoutPlanSchema(ma.SQLAlchemyAutoSchema):\n    exercises = fields.List(fields.Nested(WorkoutExerciseSchema))\n    class Meta:\n        model = WorkoutPlan\n        load_instance = True",
-        "detail": "app.schemas.workout_plan_schema",
-        "documentation": {}
-    },
-    {
-        "label": "WorkoutPlanSchema",
-        "kind": 6,
-        "importPath": "app.schemas.workout_plan_schema",
-        "description": "app.schemas.workout_plan_schema",
-        "peekOfCode": "class WorkoutPlanSchema(ma.SQLAlchemyAutoSchema):\n    exercises = fields.List(fields.Nested(WorkoutExerciseSchema))\n    class Meta:\n        model = WorkoutPlan\n        load_instance = True\n        include_fk = True",
-        "detail": "app.schemas.workout_plan_schema",
-        "documentation": {}
-    },
-    {
         "label": "Config",
         "kind": 6,
         "importPath": "app.config",
@@ -892,7 +797,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "db = SQLAlchemy()\njwt = JWTManager()\nma = Marshmallow()  # <-- This is the missing line",
+        "peekOfCode": "db = SQLAlchemy()\njwt = JWTManager()",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -901,16 +806,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "jwt = JWTManager()\nma = Marshmallow()  # <-- This is the missing line",
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "ma",
-        "kind": 5,
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "peekOfCode": "ma = Marshmallow()  # <-- This is the missing line",
+        "peekOfCode": "jwt = JWTManager()",
         "detail": "app.extensions",
         "documentation": {}
     },
