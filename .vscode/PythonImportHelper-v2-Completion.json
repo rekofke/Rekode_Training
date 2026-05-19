@@ -883,7 +883,7 @@
         "kind": 6,
         "importPath": "app.config",
         "description": "app.config",
-        "peekOfCode": "class Config:\n    SECRET_KEY = os.getenv('SECRET_KEY')\n    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')\n    SQLALCHEMY_TRACK_MODIFICATIONS = False\n    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')\n    JWT_ACCESS_TOKEN_EXPIRES = 86400  # 1 day in seconds",
+        "peekOfCode": "class Config:\n    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')\n    SQLALCHEMY_TRACK_MODIFICATIONS = False\n    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')\n    JWT_ACCESS_TOKEN_EXPIRES = 86400  # 1 day in seconds",
         "detail": "app.config",
         "documentation": {}
     },

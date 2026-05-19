@@ -49,7 +49,7 @@ pyasn1==0.6.1
 pycparser==2.22
 Pygments==2.19.1
 PyJWT==2.10.1
-pymongo @ file:///Users/erekofke/Desktop/dragonfly_energy/pymongo
+pymongo==4.3.3
 PyMySQL==1.1.1
 pyparsing==3.2.3
 python-calamine==0.4.0
