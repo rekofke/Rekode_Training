@@ -376,6 +376,14 @@
         "documentation": {}
     },
     {
+        "label": "create_app",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "ProgressLog",
         "importPath": "app.models",
         "description": "app.models",
@@ -510,22 +518,6 @@
         "description": "flask_sqlalchemy",
         "isExtraImport": true,
         "detail": "flask_sqlalchemy",
-        "documentation": {}
-    },
-    {
-        "label": "Marshmallow",
-        "importPath": "flask_marshmallow",
-        "description": "flask_marshmallow",
-        "isExtraImport": true,
-        "detail": "flask_marshmallow",
-        "documentation": {}
-    },
-    {
-        "label": "CORS",
-        "importPath": "flask_cors",
-        "description": "flask_cors",
-        "isExtraImport": true,
-        "detail": "flask_cors",
         "documentation": {}
     },
     {
@@ -892,7 +884,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "db = SQLAlchemy()\njwt = JWTManager()\nma = Marshmallow()\ncors = CORS()",
+        "peekOfCode": "db = SQLAlchemy()\njwt = JWTManager()",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -901,25 +893,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "jwt = JWTManager()\nma = Marshmallow()\ncors = CORS()",
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "ma",
-        "kind": 5,
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "peekOfCode": "ma = Marshmallow()\ncors = CORS()",
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "cors",
-        "kind": 5,
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "peekOfCode": "cors = CORS()",
+        "peekOfCode": "jwt = JWTManager()",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -966,6 +940,15 @@
         "description": "run",
         "peekOfCode": "app = create_app()\nif __name__ == '__main__':\n    app.run(debug=True, port=5001)",
         "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "wsgi",
+        "description": "wsgi",
+        "peekOfCode": "app = create_app()\nif __name__ == \"__main__\":\n    app.run()",
+        "detail": "wsgi",
         "documentation": {}
     }
 ]
