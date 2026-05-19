@@ -7,8 +7,7 @@ from ..models.trainer import Trainer
 
 
 clients_bp = Blueprint('clients', __name__)
-client_schema = ClientSchema()
-clients_schema = ClientSchema(many=True)
+
 
 @clients_bp.route('/', methods=['GET'])
 @jwt_required()
