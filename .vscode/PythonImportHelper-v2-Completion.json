@@ -518,7 +518,7 @@
         "kind": 2,
         "importPath": "app.blueprints.auth",
         "description": "app.blueprints.auth",
-        "peekOfCode": "def login():\n    data = request.json\n    user = User.query.filter_by(email=data['email']).first()\n    if not user or not check_password_hash(user.password_hash, data['password']):\n        return jsonify({'error': 'Invalid credentials'}), 401\n    token = create_access_token(identity=user.id)  # use user.id (primary key)\n    return jsonify({'access_token': token, 'user': {'id': user.id, 'email': user.email, 'name': user.name, 'role': user.role}}), 200",
+        "peekOfCode": "def login():\n    data = request.json\n    user = User.query.filter_by(email=data.get('email')).first()\n    if not user or not check_password_hash(user.password_hash, data.get('password')):\n        return jsonify({'error': 'Invalid credentials'}), 401\n    access_token = create_access_token(identity=str(user.id))\n    return jsonify({\n        'access_token': access_token,\n        'user': {\n            'id': user.id,",
         "detail": "app.blueprints.auth",
         "documentation": {}
     },
@@ -572,7 +572,34 @@
         "kind": 2,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "def get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    clients = Client.query.filter_by(...).all()\n    return jsonify([{\n        'id': c.id,\n        'name': c.name,",
+        "peekOfCode": "def get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if not user:\n        return jsonify({'error': 'User not found'}), 404\n    if user.role == 'trainer':\n        trainer = Trainer.query.filter_by(user_id=current_user_id).first()\n        if not trainer:\n            return jsonify({'error': 'Trainer profile not found'}), 404\n        clients = Client.query.filter_by(trainer_id=trainer.id).all()",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "create_client",
+        "kind": 2,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "def create_client():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    data = request.get_json()\n    if not data:\n        return jsonify({'error': 'No input data'}), 400\n    # For trainers: allow creating a client for another user\n    if user.role == 'trainer':\n        trainer = Trainer.query.filter_by(user_id=current_user_id).first()\n        if not trainer:",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "update_client",
+        "kind": 2,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "def update_client(client_id):\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    client = Client.query.get(client_id)\n    if not client:\n        return jsonify({'error': 'Client not found'}), 404\n    # Authorization\n    if user.role == 'trainer':\n        trainer = Trainer.query.filter_by(user_id=current_user_id).first()\n        if not trainer or client.trainer_id != trainer.id:",
+        "detail": "app.blueprints.clients",
+        "documentation": {}
+    },
+    {
+        "label": "delete_client",
+        "kind": 2,
+        "importPath": "app.blueprints.clients",
+        "description": "app.blueprints.clients",
+        "peekOfCode": "def delete_client(client_id):\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    client = Client.query.get(client_id)\n    if not client:\n        return jsonify({'error': 'Client not found'}), 404\n    if user.role == 'trainer':\n        trainer = Trainer.query.filter_by(user_id=current_user_id).first()\n        if not trainer or client.trainer_id != trainer.id:\n            return jsonify({'error': 'Unauthorized'}), 403",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },
@@ -581,7 +608,7 @@
         "kind": 5,
         "importPath": "app.blueprints.clients",
         "description": "app.blueprints.clients",
-        "peekOfCode": "clients_bp = Blueprint('clients', __name__)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    \"\"\"Get all clients acceessible to the current user\n    - If user is trainer: return all clients assigned to that trainer\n    - If user is client: return their own client profile\n    - If user is admin: return all cients (if needed)\n    \"\"\"\n    clients = Client.query.filter_by(...).all()",
+        "peekOfCode": "clients_bp = Blueprint('clients', __name__)\n@clients_bp.route('/', methods=['GET'])\n@jwt_required()\ndef get_clients():\n    current_user_id = get_jwt_identity()\n    user = User.query.get(current_user_id)\n    if not user:\n        return jsonify({'error': 'User not found'}), 404\n    if user.role == 'trainer':\n        trainer = Trainer.query.filter_by(user_id=current_user_id).first()",
         "detail": "app.blueprints.clients",
         "documentation": {}
     },

@@ -45,8 +45,16 @@ def register():
 @auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.json
-    user = User.query.filter_by(email=data['email']).first()
-    if not user or not check_password_hash(user.password_hash, data['password']):
+    user = User.query.filter_by(email=data.get('email')).first()
+    if not user or not check_password_hash(user.password_hash, data.get('password')):
         return jsonify({'error': 'Invalid credentials'}), 401
-    token = create_access_token(identity=user.id)  # use user.id (primary key)
-    return jsonify({'access_token': token, 'user': {'id': user.id, 'email': user.email, 'name': user.name, 'role': user.role}}), 200
+    access_token = create_access_token(identity=str(user.id))
+    return jsonify({
+        'access_token': access_token,
+        'user': {
+            'id': user.id,
+            'email': user.email,
+            'name': user.name,
+            'role': user.role
+        }
+    }), 200
